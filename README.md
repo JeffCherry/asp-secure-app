@@ -1,5 +1,13 @@
-Welcome
--------
+Logins
+------
 
-This is a relatively simple (depending on how crazy I feel) secure ASP w/ C# app 
-that uses entity framework for database access and role-based security. 
+**Username:Password**
+* Davolio:98122
+* Fuller:98401
+* Leverling:98033
+* Peacock:98052
+* Buchanan: SW18JR
+* Suyama:EC27JR
+* King:RG19SP
+* Callahan:98105
+* Dodsworth:WG27LT
