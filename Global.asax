@@ -1,4 +1,4 @@
-﻿<%@ Application Language="C#" %>
+﻿ <%@ Application Language="C#" %>
 <%@ Import Namespace="NorthwindEFModel"%>
 <%@ Import Namespace="System.Web.Security"%> 
 
