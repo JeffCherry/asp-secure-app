@@ -7092,3 +7092,12 @@ a.list-group-item-danger.active:focus {
 .wrapper {
   margin-left: 140px;
 }
+
+.navleft { position: fixed;
+}
+
+.tbl { position: relative;
+       margin-left: 33%;
+       top: 150px;
+       
+}
