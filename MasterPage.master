@@ -40,8 +40,7 @@
    <li style="padding-bottom: 20px;"><asp:LinkButton ID="btnOrders" runat="server" Text="Orders" Font-Size="18" Width="200" Height="35" CssClass="btn-info" /></li>
   </ul>
 </div>
-       
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+       <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
          
         </asp:ContentPlaceHolder>
     </div>

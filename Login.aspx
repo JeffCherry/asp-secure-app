@@ -7,7 +7,7 @@
     <asp:Login ID="lgnApp" runat="server" CssClass="container-fluid" LoginButtonStyle-CssClass="btn-lg" TitleText="<br>" 
         TextBoxStyle-CssClass="input-group-lg" Height="300" Width="500" LabelStyle-CssClass="h4" BorderColor="Yellow" BorderWidth="5" 
         CheckBoxStyle-HorizontalAlign="Center" RememberMeText="&nbsp;Remember Me" LoginButtonText="Sign In" PasswordLabelText="Password:&nbsp" 
-        UserNameLabelText="Username:&nbsp" OnAuthenticate="lgin_Authenticate" OnLoggedIn="Unnamed_PreRender">    
+        UserNameLabelText="Username:&nbsp" OnAuthenticate="lgin_Authenticate">    
         <TitleTextStyle CssClass="h2"  />
     </asp:Login> 
     </div>
