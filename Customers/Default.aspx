@@ -10,9 +10,9 @@
             <div class="tbl list-inline" style="width: 700px;">
      <asp:TextBox CssClass="input-sm" runat="server" ID="txtSearch" Text="" OnTextChanged="btnSearch_Click">
     </asp:TextBox>           
-     <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-sm btn-default" Width="75" OnClick="btnSearch_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>&nbsp;
-     <asp:Button ID="btnSearchClear" runat="server" CssClass="btn btn-sm btn-danger" Text="Clear Search" OnClick="btnSearchClear_Click" Visible="false" />
-     <asp:LinkButton ID="btnAddCustomer" runat="server" CssClass="btn btn-sm btn-success pull-right" Width="75" OnClick="btnAddCustomer_Click"><span class="glyphicon glyphicon-plus"></span></asp:LinkButton>
+     <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn btn-sm btn-default" Width="75" ToolTip="Search Table" OnClick="btnSearch_Click"><span class="glyphicon glyphicon-search"></span></asp:LinkButton>&nbsp;
+     <asp:LinkButton ID="btnSearchClear" runat="server" CssClass="btn btn-sm btn-danger" Width="75" ToolTip="Clear Search" OnClick="btnSearchClear_Click" Visible="false"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
+     <asp:LinkButton ID="btnAddCustomer" runat="server" CssClass="btn btn-sm btn-success pull-right" Width="75" ToolTip="Add A Customer" OnClick="btnAddCustomer_Click"><span class="glyphicon glyphicon-plus"></span></asp:LinkButton>
             </div>
             <br />
          <h2 id="noResults" class="tbl" runat="server" visible="false">Your search did not yield any matches :(</h2>
@@ -38,7 +38,7 @@
                <div class="form-horizontal" style="width: 750px;">
                   <div class="form-group">
                      <label for="txtID" class="h4 control-label">ID: </label>
-                     <asp:TextBox ID="txtID" CssClass="form-control" runat="server" ReadOnly="true" ></asp:TextBox>
+                     <asp:TextBox ID="txtID" CssClass="form-control" Text="GOOGL" runat="server" ReadOnly="true" ></asp:TextBox>
                   </div>
                      
                   <div class="form-group">   
@@ -85,10 +85,18 @@
                     
                     <br />
                     <div class="list-inline" style="width: 700px">
-                             <asp:LinkButton ID="btnBack" CssClass="btn btn-sm btn-warning pull-left" runat="server" Width="75" OnClick="btnBack_Click"><span class="glyphicon glyphicon-arrow-left"></span></asp:LinkButton>
-                            <asp:LinkButton ID="btnAdd" CssClass="btn btn-sm btn-info form-inline" style="margin-left: 40%" Width="75" runat="server" Visible="false"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
-                            <asp:LinkButton ID="btnUpdate" CssClass="btn btn-sm btn-success form-inline" style="margin-left: 35%" Width="75" runat="server" Visible="false"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
-                            <asp:LinkButton ID="btnDelete" CssClass="btn btn-sm btn-danger pull-right" Width="75" runat="server" Visible="false"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
+                             <asp:LinkButton ID="btnBack" CssClass="btn btn-sm btn-warning pull-left" runat="server" Width="75" ToolTip="Go Back" OnClick="btnBack_Click">
+                                 <span class="glyphicon glyphicon-arrow-left"></span>
+                             </asp:LinkButton>
+                            <asp:LinkButton ID="btnAdd" CssClass="btn btn-sm btn-info form-inline" style="margin-left: 40%" Width="75" ToolTip="Create Customer" runat="server" OnClick="btnAdd_Click" Visible="false">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </asp:LinkButton>
+                            <asp:LinkButton ID="btnUpdate" CssClass="btn btn-sm btn-success form-inline" style="margin-left: 35%" Width="75" ToolTip="Update Customer" runat="server" OnClick="btnUpdate_Click" Visible="false">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </asp:LinkButton>
+                            <asp:LinkButton ID="btnDelete" CssClass="btn btn-sm btn-danger pull-right" Width="75" ToolTip="Delete Customer" runat="server" OnClick="btnDelete_Click" Visible="false">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </asp:LinkButton>
                     </div>
                     <br />
                 </div>
