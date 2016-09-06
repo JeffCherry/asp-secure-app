@@ -12,8 +12,13 @@ public partial class Customers_Default : PageBase
     {
         base.Page_Load(sender, e);
         GridBind();
+        ScriptManager.RegisterStartupScript(Page, this.GetType(), "Key", "<script>MakeStaticHeader('" + grdCust.ClientID + "', 350, 950 , 40 ,false); </script>", false);
     }
 
+    protected void Page_PreRender(object sender, EventArgs e)
+    {
+        grdCust.Rows[0].Visible = false;
+    }
 
     protected void GridBind()
     {
@@ -32,47 +37,13 @@ public partial class Customers_Default : PageBase
         GridBind();
     }
 
-    protected void btnSearch_Click(object sender, EventArgs e)
-    {
-        NorthwindEntities ne = new NorthwindEntities();
-        var results = (from c in ne.Customers
-                       where c.CustomerID.Contains(txtSearch.Text) ||
-                       c.CompanyName.Contains(txtSearch.Text)
-                       select c).ToList<Customer>();
-
-        if (results.Count == 0)
-        {
-            noResults.Visible = true;
-            grdCust.DataSource = results;
-            grdCust.DataBind();
-            btnSearchClear.Visible = true;
-        }
-        else
-        {
-            grdCust.DataSource = results;
-            grdCust.DataBind();
-            btnSearchClear.Visible = true;
-        }
-    }
-
-    protected void btnSearchClear_Click(object sender, EventArgs e)
-    {
-        GridBind();
-        txtSearch.Text = "";
-        btnSearchClear.Visible = false;
-        noResults.Visible = false;
-    }
-
     protected void btnAddCustomer_Click(object sender, EventArgs e)
     {
         pnlList.Visible = false;
         pnlInfo.Visible = true;
         infoTitle.Text = "Create New Customer";
         btnAdd.Visible = true;
-        var container = Master.FindControl("ContentPlaceHolder1");
-        TextBox control = (TextBox)container.FindControl("txtCompanyName");
-        txtCompanyName.TextChanged += Company_TextChanged;
-        control.TextChanged += Company_TextChanged;
+        txtID.ReadOnly = false;
     }
 
     protected void btnBack_Click(object sender, EventArgs e)
@@ -96,9 +67,10 @@ public partial class Customers_Default : PageBase
     protected void grdCust_SelectedIndexChanged(object sender, EventArgs e)
     {
         NorthwindEntities ne = new NorthwindEntities();
-        string selectedKey = grdCust.SelectedDataKey.Value.ToString();
-        Customer customer = (from c in ne.Customers
-                             where c.CustomerID == selectedKey
+        string id = grdCust.DataKeys[grdCust.SelectedIndex].Value.ToString();
+        txtID.ReadOnly = true;
+         Customer customer = (from c in ne.Customers
+                             where c.CustomerID == id
                              select c).FirstOrDefault<Customer>();
         txtAddress.Text = customer.Address;
         txtCity.Text = customer.City;
@@ -128,7 +100,7 @@ public partial class Customers_Default : PageBase
         customer.ContactName = txtContactName.Text;
         customer.ContactTitle = txtContactTitle.Text;
         customer.Country = txtCountry.Text;
-        customer.CustomerID = txtID.Text;
+        customer.CustomerID = txtID.Text.ToUpper();
         customer.Phone = txtPhone.Text;
         customer.PostalCode = txtPostal.Text;
         ne.Customers.Add(customer);
@@ -137,7 +109,8 @@ public partial class Customers_Default : PageBase
         pnlList.Visible = true;
         pnlInfo.Visible = false;
         GridBind();
-
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Customer Created!')", true);
+        btnBack_Click(sender, e);
     }
 
     protected void btnUpdate_Click(object sender, EventArgs e)
@@ -161,6 +134,8 @@ public partial class Customers_Default : PageBase
         pnlList.Visible = true;
         pnlInfo.Visible = false;
         GridBind();
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Customer Updated!')", true);
+        btnBack_Click(sender, e);
     }
 
     protected void btnDelete_Click(object sender, EventArgs e)
@@ -175,11 +150,8 @@ public partial class Customers_Default : PageBase
         pnlList.Visible = true;
         pnlInfo.Visible = false;
         GridBind();
-    }
+        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Customer Deleted!')", true);
+        btnBack_Click(sender, e);
 
-    protected void Company_TextChanged(object sender, EventArgs e)
-    {
-        string id = txtCompanyName.Text.Remove(5);
-        txtID.Text = id.ToUpper();
     }
 }
