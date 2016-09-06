@@ -15,6 +15,8 @@ public class PageBase : System.Web.UI.Page
         LinkButton btnCust = (LinkButton)Master.FindControl("btnCustomers");
         LinkButton btnOrd = (LinkButton)Master.FindControl("btnOrders");
 
+        btnCust.Click += btnCustClick;
+
         if (Request.IsAuthenticated)
         {
           Master.FindControl("topNav").Visible = true;
@@ -40,5 +42,10 @@ public class PageBase : System.Web.UI.Page
             btnCust.Visible = true;
             btnOrd.Visible = true;
         }
+    }
+
+    protected void btnCustClick(object sender, EventArgs e)
+    {
+        Response.Redirect("/Customers");
     }
 }
