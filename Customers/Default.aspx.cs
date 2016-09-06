@@ -12,12 +12,13 @@ public partial class Customers_Default : PageBase
     {
         base.Page_Load(sender, e);
         GridBind();
-        ScriptManager.RegisterStartupScript(Page, this.GetType(), "Key", "<script>MakeStaticHeader('" + grdCust.ClientID + "', 350, 950 , 40 ,false); </script>", false);
     }
 
     protected void Page_PreRender(object sender, EventArgs e)
     {
+        ScriptManager.RegisterStartupScript(Page, this.GetType(), "Key", "<script>MakeStaticHeader('" + grdCust.ClientID + "', 350, 950 , 40 ,false); </script>", false);
         grdCust.Rows[0].Visible = false;
+        DivFooterRow.Visible = false;
     }
 
     protected void GridBind()
@@ -41,7 +42,7 @@ public partial class Customers_Default : PageBase
     {
         pnlList.Visible = false;
         pnlInfo.Visible = true;
-        infoTitle.Text = "Create New Customer";
+        infoTitle.Text = "Create Customer";
         btnAdd.Visible = true;
         txtID.ReadOnly = false;
     }

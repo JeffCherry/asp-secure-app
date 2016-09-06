@@ -85,7 +85,7 @@ document.getElementById('DivFooterRow').scrollLeft = Scrollablediv.scrollLeft;
      </Columns>
    </asp:GridView>
                </div>
-             <div id="DivFooterRow" hidden="hidden"></div>
+             <div id="DivFooterRow" runat="server"></div>
 
 </div>
          </asp:Panel>
@@ -146,13 +146,14 @@ document.getElementById('DivFooterRow').scrollLeft = Scrollablediv.scrollLeft;
                              <asp:LinkButton ID="btnBack" CssClass="btn btn-sm btn-warning pull-left" runat="server" Width="75" ToolTip="Go Back" OnClick="btnBack_Click">
                                  <span class="glyphicon glyphicon-arrow-left"></span>
                              </asp:LinkButton>
-                            <asp:LinkButton ID="btnAdd" CssClass="btn btn-sm btn-info form-inline" style="margin-left: 40%" Width="75" ToolTip="Create Customer" runat="server" OnClick="btnAdd_Click" Visible="false">
+                            <asp:LinkButton ID="btnAdd" CssClass="btn btn-sm btn-success form-inline" style="margin-left: 37%" Width="100" ToolTip="Create Customer" runat="server" OnClick="btnAdd_Click" Visible="false">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </asp:LinkButton>
-                            <asp:LinkButton ID="btnUpdate" CssClass="btn btn-sm btn-success form-inline" style="margin-left: 35%" Width="75" ToolTip="Update Customer" runat="server" OnClick="btnUpdate_Click" Visible="false">
+                            &nbsp;&nbsp;&nbsp;<asp:LinkButton ID="btnUpdate" CssClass="btn btn-sm btn-success form-inline" style="margin-left: 35%" Width="100" ToolTip="Update Customer" runat="server" OnClick="btnUpdate_Click" Visible="false">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </asp:LinkButton>
-                            <asp:LinkButton ID="btnDelete" CssClass="btn btn-sm btn-danger pull-right" Width="75" ToolTip="Delete Customer" runat="server" OnClick="btnDelete_Click" Visible="false">
+                            <asp:LinkButton ID="btnDelete" CssClass="btn btn-sm btn-danger pull-right" Width="75" ToolTip="Delete Customer" runat="server" OnClick="btnDelete_Click" Visible="false"
+                                OnClientClick="return confirm('Are you sure you want delete this customer?');" CommandName="Delete" CommandArgument="">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </asp:LinkButton>
                     </div>
