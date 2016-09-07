@@ -239,6 +239,7 @@ namespace NorthwindEFModel
     {
         public string Role1 { get; set; }
         public int EmployeeID { get; set; }
+        public int id { get; set; }
     
         public virtual Employee Employee { get; set; }
     }

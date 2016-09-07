@@ -16,6 +16,7 @@ public class PageBase : System.Web.UI.Page
         LinkButton btnOrd = (LinkButton)Master.FindControl("btnOrders");
 
         btnCust.Click += btnCustClick;
+        btnEmp.Click += btnEmpClick;
 
         if (Request.IsAuthenticated)
         {
@@ -44,8 +45,6 @@ public class PageBase : System.Web.UI.Page
         }
     }
 
-    protected void btnCustClick(object sender, EventArgs e)
-    {
-        Response.Redirect("/Customers");
-    }
+    protected void btnCustClick(object sender, EventArgs e) { Response.Redirect("/Customers"); }
+    protected void btnEmpClick(object sender, EventArgs e) { Response.Redirect("/Employees"); }
 }
