@@ -17,6 +17,7 @@ public class PageBase : System.Web.UI.Page
 
         btnCust.Click += btnCustClick;
         btnEmp.Click += btnEmpClick;
+        btnOrd.Click += btnOrdClick;
 
         if (Request.IsAuthenticated)
         {
@@ -47,4 +48,5 @@ public class PageBase : System.Web.UI.Page
 
     protected void btnCustClick(object sender, EventArgs e) { Response.Redirect("/Customers"); }
     protected void btnEmpClick(object sender, EventArgs e) { Response.Redirect("/Employees"); }
+    protected void btnOrdClick(object sender, EventArgs e) { Response.Redirect("/Orders"); }
 }

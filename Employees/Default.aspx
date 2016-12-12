@@ -89,7 +89,7 @@ document.getElementById('DivFooterRow').scrollLeft = Scrollablediv.scrollLeft;
          </asp:Panel>
             <asp:Panel ID="pnlInfo" runat="server" Visible="false">
                 <div class="tbl">
-                <asp:Label id="infoTitle" class="h1 center-block" style="text-align:center" Width="950" runat="server"></asp:Label><br />
+                <asp:Label id="infoTitle" CssClass="h1 center-block" style="text-align:center" Width="950" runat="server"></asp:Label><br />
            
                <div class="form-horizontal" style="width: 950px;">
                   <div class="form-group">
