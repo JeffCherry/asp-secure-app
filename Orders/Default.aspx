@@ -63,23 +63,22 @@ document.getElementById('DivFooterRow').scrollLeft = Scrollablediv.scrollLeft;
         <ContentTemplate>
      <asp:Panel ID="pnlList" runat="server">
             <div class="tbl list-inline" style="width: 950px;">   
-              <asp:Label runat="server" CssClass="pull-left" style="font-size: 35px">Customers</asp:Label>         
-     <asp:LinkButton ID="btnAddCustomer" runat="server" CssClass="btn btn-sm btn-success pull-right" Width="75" ToolTip="New Customer" OnClick="btnAddCustomer_Click"><span class="glyphicon glyphicon-plus"></span></asp:LinkButton>
+              <asp:Label runat="server" CssClass="pull-left" style="font-size: 35px">Orders</asp:Label>         
+     <asp:LinkButton ID="btnAddOrder" runat="server" CssClass="btn btn-sm btn-success pull-right" Width="75" ToolTip="New Order" OnClick="btnAddOrder_Click"><span class="glyphicon glyphicon-plus"></span></asp:LinkButton>
             </div>
             <br /><br /><br />
-         <h2 id="noResults" class="tbl" runat="server" visible="false">Your search did not yield any matches :(</h2>
          <div id="DivRoot" class="tbl">
     <div style="overflow: hidden;" id="DivHeaderRow">
     </div>
 
     <div style="overflow:scroll;" onscroll="OnScrollDiv(this)" id="DivMainContent">
-    <asp:GridView ID="grdCust" runat="server" AutoGenerateColumns="false"
+    <asp:GridView ID="grdOrd" runat="server" AutoGenerateColumns="false"
        CssClass="table table-striped table-bordered table-condensed table-hover" BorderColor="Black" HeaderStyle-BackColor="LightGray"  HorizontalAlign="Center" 
-       Width="950" OnSelectedIndexChanged="grdCust_SelectedIndexChanged" DataKeyNames="CustomerID">
+       Width="950" DataKeyNames="OrderID" OnSelectedIndexChanged="grdOrd_SelectedIndexChanged">
      <Columns>
-         <asp:ButtonField DataTextField="CustomerID" ButtonType="Link" HeaderText="ID" ControlStyle-Font-Underline="false" CommandName="Select" />
-         <asp:BoundField DataField="CompanyName" HeaderText="Company" />
-         <asp:BoundField DataField="ContactName" HeaderText="Contact" />
+         <asp:ButtonField DataTextField="OrderID" ButtonType="Link" HeaderText="ID" ControlStyle-Font-Underline="false" CommandName="Select" />
+         <asp:BoundField DataField="CustomerID" HeaderText="Customer" />
+         <asp:BoundField DataField="OrderDate" HeaderText="Date Ordered" />
      </Columns>
    </asp:GridView>
                </div>
@@ -92,28 +91,34 @@ document.getElementById('DivFooterRow').scrollLeft = Scrollablediv.scrollLeft;
                 <asp:Label id="infoTitle" CssClass="h1 center-block" style="text-align:center" Width="950" runat="server"></asp:Label><br />
            
                <div class="form-horizontal" style="width: 950px;">
-                  <div class="form-group">
+                  <div class="form-group" id="divID" runat="server">
                      <label for="txtID" class="h4 control-label">ID: </label>
                      <asp:TextBox ID="txtID" CssClass="form-control" runat="server" MaxLength="5" ></asp:TextBox>
                   </div>
                      
                   <div class="form-group">   
-                    <label for="txtCompanyName" class="h4 control-label">Company: </label>
-                    <asp:TextBox ID="txtCompanyName" CssClass="form-control" runat="server"></asp:TextBox>
+                    <label for="txtCustomer" class="h4 control-label">Customer: </label>
+                      <asp:DropDownList ID="drpCust" runat="server" CssClass="form-control" Visible="false"></asp:DropDownList>
+                      <asp:TextBox ID="txtCustomer" CssClass="form-control" runat="server"></asp:TextBox>
                   </div>
   
                   <div class="form-group">  
-                    <label for="txtContactName" class="h4 control-label">&nbsp;Contact: </label>
-                    <asp:TextBox ID="txtContactName" CssClass="form-control" runat="server"></asp:TextBox>
+                    <label for="txtODate" class="h4 control-label">Date Ordered: </label>
+                    <asp:TextBox ID="txtODate" CssClass="form-control" runat="server"></asp:TextBox>
+                  </div>
+
+                    <div class="form-group">  
+                    <label for="txtSDate" class="h4 control-label">Date Shipped: </label>
+                    <asp:TextBox ID="txtSDate" CssClass="form-control" runat="server"></asp:TextBox>
                   </div>
 
                   <div class="form-group">
-                   <label for="txtContactTitle" class="h4 control-label">Job Title: </label>
-                   <asp:TextBox ID="txtContactTitle" CssClass="form-control" runat="server"></asp:TextBox>
+                   <label for="txtEmployee" class="h4 control-label">Created By: </label>
+                   <asp:TextBox ID="txtEmployee" CssClass="form-control" runat="server"></asp:TextBox>
                   </div>
 
                   <div class="form-group">
-                   <label for="txtAddress" class="h4 control-label">Address: </label>
+                   <label for="txtAddress" class="h4 control-label">Shipping Address: </label>
                    <asp:TextBox ID="txtAddress" CssClass="form-control" runat="server"></asp:TextBox>
                   </div>
 
@@ -133,10 +138,10 @@ document.getElementById('DivFooterRow').scrollLeft = Scrollablediv.scrollLeft;
                   </div>
 
                   <div class="form-group">
-                   <label for="txtPhone" class="h4 control-label">Phone: </label>
-                   <asp:TextBox ID="txtPhone" CssClass="form-control" runat="server"></asp:TextBox>
+                   <label for="txtShipper" class="h4 control-label">Shipper: </label>
+                   <asp:DropDownList ID="drpShip" runat="server" CssClass="form-control" Visible="false"></asp:DropDownList>
+                   <asp:TextBox ID="txtShipper" CssClass="form-control" runat="server"></asp:TextBox>
                   </div>
-
               </div>
                     
                     <br />
@@ -144,14 +149,14 @@ document.getElementById('DivFooterRow').scrollLeft = Scrollablediv.scrollLeft;
                              <asp:LinkButton ID="btnBack" CssClass="btn btn-sm btn-warning pull-left" runat="server" Width="75" ToolTip="Go Back" OnClick="btnBack_Click">
                                  <span class="glyphicon glyphicon-arrow-left"></span>
                              </asp:LinkButton>
-                            <asp:LinkButton ID="btnAdd" CssClass="btn btn-sm btn-success form-inline" style="margin-left: 37%" Width="100" ToolTip="Create Customer" runat="server" OnClick="btnAdd_Click" Visible="false">
+                            <asp:LinkButton ID="btnAdd" CssClass="btn btn-sm btn-success form-inline" style="margin-left: 37%" Width="100" ToolTip="Create Order" runat="server" OnClick="btnAdd_Click" Visible="false">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </asp:LinkButton>
-                            &nbsp;&nbsp;&nbsp;<asp:LinkButton ID="btnUpdate" CssClass="btn btn-sm btn-success form-inline" style="margin-left: 35%" Width="100" ToolTip="Update Customer" runat="server" OnClick="btnUpdate_Click" Visible="false">
+                            &nbsp;&nbsp;&nbsp;<asp:LinkButton ID="btnUpdate" CssClass="btn btn-sm btn-success form-inline" style="margin-left: 35%" Width="100" ToolTip="Update Order" runat="server" OnClick="btnUpdate_Click" Visible="false">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </asp:LinkButton>
-                            <asp:LinkButton ID="btnDelete" CssClass="btn btn-sm btn-danger pull-right" Width="75" ToolTip="Delete Customer" runat="server" OnClick="btnDelete_Click" Visible="false"
-                                OnClientClick="return confirm('Are you sure you want delete this customer?');" CommandName="Delete" CommandArgument="">
+                            <asp:LinkButton ID="btnDelete" CssClass="btn btn-sm btn-danger pull-right" Width="75" ToolTip="Delete Order" runat="server" OnClick="btnDelete_Click" Visible="false"
+                                OnClientClick="return confirm('Are you sure you want delete this order?');" CommandName="Delete" CommandArgument="">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </asp:LinkButton>
                     </div>
