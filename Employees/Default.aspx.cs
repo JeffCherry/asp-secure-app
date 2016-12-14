@@ -14,12 +14,6 @@ public partial class Customers_Default : PageBase
         GridBind();
     }
 
-    protected void Page_PreRender(object sender, EventArgs e)
-    {
-        ScriptManager.RegisterStartupScript(Page, this.GetType(), "Key", "<script>MakeStaticHeader('" + grdEmp.ClientID + "', 350, 950 , 40 ,false); </script>", false);
-        DivFooterRow.Visible = false;
-    }
-
     protected void GridBind()
     {
         NorthwindEntities ne = new NorthwindEntities();
