@@ -10,6 +10,7 @@ public partial class Customers_Default : PageBase
 {
     protected override void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Employees";
         base.Page_Load(sender, e);
         GridBind();
     }

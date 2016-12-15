@@ -16,7 +16,7 @@
         
     <div class="container-fluid">
     <asp:GridView ID="grdEmp" runat="server" AutoGenerateColumns="false"
-       CssClass="table table-bordered" HeaderStyle-CssClass="thead-inverse" BorderColor="white" HorizontalAlign="Center" 
+       CssClass="table table-bordered" HeaderStyle-CssClass="thead-inverse" HorizontalAlign="Center" 
        DataKeyNames="EmployeeID" OnSelectedIndexChanged="grdEmp_SelectedIndexChanged">
      <Columns>
          <asp:ButtonField DataTextField="EmployeeID" ButtonType="Link" HeaderText="ID" ControlStyle-Font-Underline="false" CommandName="Select" />
@@ -89,7 +89,6 @@
                        <asp:ListItem Value="Admin">Admin</asp:ListItem>
                     </asp:RadioButtonList>
                            </label>
-                   </label>
                     </div>
                        </fieldset>
 
