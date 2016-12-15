@@ -10,7 +10,7 @@ public class PageBase : System.Web.UI.Page
     protected virtual void Page_Load(object sender, EventArgs e)
     {
         Master.FindControl("topNav").Visible = false;
-        Master.FindControl("sideNav").Visible = false;
+        Master.FindControl("topNav").Visible = false;
         LinkButton btnEmp = (LinkButton)Master.FindControl("btnEmployees");
         LinkButton btnCust = (LinkButton)Master.FindControl("btnCustomers");
         LinkButton btnOrd = (LinkButton)Master.FindControl("btnOrders");
@@ -22,7 +22,7 @@ public class PageBase : System.Web.UI.Page
         if (Request.IsAuthenticated)
         {
           Master.FindControl("topNav").Visible = true;
-          Master.FindControl("sideNav").Visible = true;
+          Master.FindControl("topNav").Visible = true;
             NorthwindEntities ne = new NorthwindEntities();
             int id = int.Parse(User.Identity.Name);
             Employee emp = (from em in ne.Employees

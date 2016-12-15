@@ -10,15 +10,9 @@ public partial class Customers_Default : PageBase
 {
     protected override void Page_Load(object sender, EventArgs e)
     {
+        Page.Title = "Customers";
         base.Page_Load(sender, e);
         GridBind();
-    }
-
-    protected void Page_PreRender(object sender, EventArgs e)
-    {
-        ScriptManager.RegisterStartupScript(Page, this.GetType(), "Key", "<script>MakeStaticHeader('" + grdCust.ClientID + "', 350, 950 , 40 ,false); </script>", false);
-        grdCust.Rows[0].Visible = false;
-        DivFooterRow.Visible = false;
     }
 
     protected void GridBind()

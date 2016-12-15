@@ -7,12 +7,11 @@ using System.Web.UI.WebControls;
 using System.Web.Security;
 using NorthwindEFModel;
 
-public partial class Login : PageBase
+public partial class Login : System.Web.UI.Page
 {
-    protected override void Page_Load(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
     {
-        base.Page_Load(sender, e);
-
+      
     }
 
     protected void lgin_Authenticate(object s, AuthenticateEventArgs e)

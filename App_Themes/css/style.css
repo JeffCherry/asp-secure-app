@@ -1,0 +1,19 @@
+﻿body{ background-color:#f7f7f9;
+}
+
+.container1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont{
+    width: 55em;
+    height: 10em;
+    border-radius: 1em;
+    box-shadow: 0.25em 0.25em grey;
+    background-color: #FFFFFF
+}
+
+.title{ padding-bottom: -1em;
+}
